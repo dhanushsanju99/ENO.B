@@ -2576,8 +2576,9 @@ footer {
     width: 100%;
     height: 360px;
     opacity: 1;
-    order: -1;
-    margin-bottom: 28px
+    order: 0;
+    margin-top: 28px;
+    margin-bottom: 0
   }
 
   .hero-visual::before {
@@ -2600,7 +2601,14 @@ footer {
   }
 
   .hero-content {
-    max-width: 100%
+    max-width: 100%;
+    order: -1;
+    text-align: center
+  }
+
+  .hero-content .hero-desc {
+    margin-left: auto;
+    margin-right: auto
   }
 
   .hero-why {
@@ -2651,6 +2659,21 @@ footer {
 
   .digital-row-points {
     max-width: 100%
+  }
+
+  .digital-row-text h3 {
+    font-family: var(--heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px
+  }
+
+  .digital-row-points li {
+    font-family: var(--body);
+    font-size: 0.92rem;
+    font-weight: 400;
+    line-height: 1.7
   }
 
   #chat-window {
@@ -4590,11 +4613,22 @@ function sendQuick(q) {
     requestAnimationFrame(loop);
   }
 
-  window.addEventListener('load', function(){ resize(); requestAnimationFrame(loop); });
+  window.addEventListener('load', function(){
+    resize();
+    requestAnimationFrame(loop);
+    // Mobile fonts/images can shift layout slightly after 'load' fires,
+    // leaving the canvas locked to a stale size (which reads as the globe
+    // being frozen/stuck). Re-measure a couple of times shortly after to
+    // make sure the canvas always matches the actual rendered box.
+    setTimeout(resize, 300);
+    setTimeout(resize, 900);
+  });
   window.addEventListener('resize', resize);
+  if (window.ResizeObserver && visual) {
+    const heroResizeObserver = new ResizeObserver(() => resize());
+    heroResizeObserver.observe(visual);
+  }
 })();
-
-// ── EMPLOYEE PORTAL ──────────────────────────────────────────────────────────
 function openPortal() {
   document.getElementById('portal-modal').classList.add('open');
   document.body.style.overflow = 'hidden';
