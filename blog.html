@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Enovexa Solutions</title>
+  <meta name="description" content="Insights on web development, digital marketing, branding and growth from the Enovexa Solutions team." />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <!-- Stylesheet -->
+  <style>
+:root {
+  --green: #A50D25;
+  --green-mid: #A50D25;
+  --green-light: #A50D25;
+  --accent: #A50D25;
+  --lime: #F7C5CC;
+  --red: #A50D25;
+  --white: #FFFFFF;
+  --off-white: #F9F9F9;
+  --light-gray: #F2F2F2;
+  --dark: #1A1A1A;
+  --muted: #6B6B6B;
+  --border: rgba(200, 16, 46, 0.13);
+  --card-bg: #FFFFFF;
+  --heading: Arial, sans-serif;
+  --body: Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+
+html {
+  scroll-behavior: smooth
+}
+
+body {
+  background: var(--off-white);
+  color: var(--dark);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  padding: 0 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  background: #fff;
+  height: 70px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  border-bottom: 1.5px solid rgba(200, 16, 46, 0.12)
+}
+
+.logo {
+  font-family: var(--heading);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--dark);
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+  height: 52px;
+  max-width: 180px;
+  overflow: hidden
+}
+
+.logo img {
+  height: 52px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  display: block
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--red);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .85rem;
+  font-weight: 800;
+  color: #fff
+}
+
+.logo span {
+  color: var(--red)
+}
+
+.nav-links {
+  display: flex;
+  gap: 6px;
+  list-style: none;
+  flex-wrap: nowrap
+}
+
+.nav-links a {
+  color: #444;
+  text-decoration: none;
+  font-size: .84rem;
+  font-weight: 500;
+  padding: 7px 12px;
+  border-radius: 6px;
+  transition: all .2s;
+  white-space: nowrap
+}
+
+.nav-links a:hover {
+  color: var(--red);
+  background: rgba(200, 16, 46, 0.07)
+}
+
+.nav-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center
+}
+
+.nav-cta {
+  text-decoration: none;
+  background: var(--red);
+  color: #fff;
+  border: none;
+  padding: 9px 22px;
+  font-family: var(--body);
+  font-size: .84rem;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all .2s;
+  letter-spacing: .2px;
+  display: inline-flex;
+  align-items: center
+}
+
+.nav-cta:hover {
+  background: var(--green-mid);
+  transform: translateY(-1px)
+}
+
+.nav-portal {
+  background: transparent;
+  color: var(--dark);
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  padding: 9px 16px;
+  font-family: var(--body);
+  font-size: .84rem;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all .2s
+}
+
+.nav-portal:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--dark)
+}
+
+/* ── MOBILE NAV TOGGLE (hidden on desktop) ── */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 38px;
+  height: 38px;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0;
+  align-items: center
+}
+
+.nav-burger span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--dark);
+  border-radius: 2px;
+  transition: transform .25s, opacity .25s
+}
+
+.nav-burger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg)
+}
+
+.nav-burger.open span:nth-child(2) {
+  opacity: 0
+}
+
+.nav-burger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg)
+}
+
+.nav-collapsible {
+  display: flex;
+  align-items: center;
+  gap: 14px
+}
+
+/* ── PAGE HERO ── */
+.page-hero {
+  background: #fff;
+  padding: 80px 5vw 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: flex-start;
+  max-width: 100%
+}
+
+.page-hero::before,
+.page-hero::after {
+  display: none
+}
+
+.page-hero .sec-label {
+  justify-content: flex-start;
+  color: var(--accent)
+}
+
+.page-hero .sec-label::before {
+  background: var(--accent)
+}
+
+.page-hero h1 {
+  font-family: var(--heading);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  color: var(--dark);
+  margin: 14px 0 20px
+}
+
+.page-hero h1 em {
+  color: var(--accent);
+  font-style: normal
+}
+
+.page-hero p {
+  max-width: 520px;
+  margin: 0;
+  color: var(--muted);
+  font-size: .97rem;
+  line-height: 1.8
+}
+
+.page-hero-img {
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  border-radius: 20px;
+  display: block
+}
+
+@media(max-width: 900px) {
+  .page-hero {
+    grid-template-columns: 1fr;
+    padding: 100px 5vw 48px;
+    gap: 32px
+  }
+
+  .page-hero-img {
+    height: 260px;
+    width: 100%
+  }
+}
+
+/* ── SECTIONS ── */
+section {
+  padding: 96px 5vw
+}
+
+.sec-label {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px
+}
+
+.sec-label::before {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: var(--red);
+  border-radius: 2px
+}
+
+.sec-title {
+  font-family: var(--heading);
+  font-size: clamp(1.9rem, 3.8vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  color: var(--dark)
+}
+
+.sec-title em {
+  color: var(--red);
+  font-style: normal
+}
+
+.sec-sub {
+  color: var(--muted);
+  font-size: .98rem;
+  max-width: 560px;
+  margin-top: 14px;
+  font-weight: 400;
+  line-height: 1.8
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .65s ease, transform .65s ease
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: none
+}
+
+/* ── BLOG STATS STRIP ── */
+.blog-stats-strip {
+  background: #fff;
+  padding: 30px 5vw;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 1180px;
+  margin: 0 auto
+}
+
+.blog-stat {
+  text-align: center;
+  padding: 10px
+}
+
+.blog-stat strong {
+  display: block;
+  font-family: var(--heading);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--red);
+  letter-spacing: -0.5px
+}
+
+.blog-stat span {
+  font-size: .78rem;
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: .3px
+}
+
+@media (max-width: 600px) {
+  .blog-stats-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px 10px;
+    padding: 22px 6vw
+  }
+
+  .blog-stat {
+    padding: 6px
+  }
+
+  .blog-stat strong {
+    font-size: 1.3rem
+  }
+
+  .blog-stat span {
+    font-size: .68rem
+  }
+}
+
+/* ── BLOG WRAP ── */
+.blog-wrap {
+  max-width: 1180px;
+  margin: 0 auto
+}
+
+/* ── FEATURED POST ── */
+.featured-post {
+  background: var(--dark);
+  border-radius: 22px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  margin-bottom: 72px;
+  position: relative
+}
+
+.featured-media {
+  position: relative;
+  min-height: 340px;
+  background: linear-gradient(135deg, #2a0509, var(--red) 130%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden
+}
+
+.featured-media::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.12), transparent 70%);
+  border-radius: 50%
+}
+
+.featured-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover
+}
+
+.featured-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(20, 4, 6, .78), rgba(165, 13, 37, .35) 75%);
+  z-index: 1
+}
+
+.featured-body {
+  padding: 52px 52px 52px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center
+}
+
+.featured-tag {
+  display: inline-flex;
+  align-self: flex-start;
+  background: rgba(165, 13, 37, .18);
+  border: 1px solid rgba(255, 255, 255, .15);
+  color: var(--accent);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 18px
+}
+
+.featured-body h2 {
+  font-family: var(--heading);
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.5px;
+  line-height: 1.22;
+  margin-bottom: 14px
+}
+
+.featured-body p {
+  color: rgba(255, 255, 255, .58);
+  font-size: .96rem;
+  line-height: 1.8;
+  margin-bottom: 26px
+}
+
+.featured-meta {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 26px
+}
+
+.featured-meta-text p {
+  margin: 0;
+  color: #fff;
+  font-size: .85rem;
+  font-weight: 700
+}
+
+.featured-meta-text span {
+  color: rgba(255, 255, 255, .45);
+  font-size: .78rem
+}
+
+.featured-read-btn {
+  background: var(--red);
+  color: #fff;
+  border: none;
+  padding: 13px 28px;
+  font-family: var(--body);
+  font-size: .86rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all .2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start
+}
+
+.featured-read-btn:hover {
+  background: var(--green-mid);
+  transform: translateY(-1px)
+}
+
+/* ── BLOG GRID ── */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px
+}
+
+.blog-card-link-wrap {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%
+}
+
+.blog-card {
+  height: 100%;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform .25s, box-shadow .25s;
+  display: flex;
+  flex-direction: column
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, .08)
+}
+
+.blog-card-media {
+  height: 150px;
+  background: linear-gradient(135deg, rgba(165, 13, 37, .1), rgba(165, 13, 37, .04));
+  display: block;
+  position: relative;
+  overflow: hidden
+}
+
+.blog-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .5s ease
+}
+
+.blog-card:hover .blog-card-media img {
+  transform: scale(1.08)
+}
+
+.blog-card-cat {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #fff;
+  color: var(--red);
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .1)
+}
+
+.blog-card-body {
+  padding: 18px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1
+}
+
+.blog-card-date {
+  color: var(--muted);
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  margin-bottom: 8px
+}
+
+.blog-card-body h3 {
+  font-family: var(--heading);
+  font-size: .98rem;
+  font-weight: 800;
+  color: var(--dark);
+  letter-spacing: -0.3px;
+  line-height: 1.35;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden
+}
+
+.blog-card-body p {
+  color: var(--muted);
+  font-size: .8rem;
+  line-height: 1.65;
+  margin-bottom: 16px;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden
+}
+
+.blog-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 14px;
+  border-top: 1px solid var(--border)
+}
+
+.blog-card-readtime {
+  font-size: .7rem;
+  color: var(--muted);
+  font-weight: 500
+}
+
+.blog-card-readtime::before {
+  content: '⏱';
+  margin-right: 6px
+}
+
+.blog-card-link {
+  color: var(--red);
+  text-decoration: none;
+  font-size: .84rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px
+}
+
+.blog-card-link:hover {
+  text-decoration: underline
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #0F0F0F;
+  padding: 72px 5vw 36px
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+  gap: 48px;
+  margin-bottom: 52px
+}
+
+.footer-brand p {
+  color: rgba(255, 255, 255, .45);
+  font-size: .86rem;
+  line-height: 1.8;
+  margin-top: 16px;
+  max-width: 250px
+}
+
+.footer-col h5,
+.footer-engage h5,
+.footer-transform h5 {
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .4);
+  margin-bottom: 18px
+}
+
+.footer-col ul {
+  list-style: none
+}
+
+.footer-col ul li {
+  margin-bottom: 9px
+}
+
+.footer-col ul li a {
+  color: rgba(255, 255, 255, .6);
+  text-decoration: none;
+  font-size: .86rem;
+  transition: color .2s
+}
+
+.footer-col ul li a:hover {
+  color: var(--accent)
+}
+
+.engage-item {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 9px;
+  font-size: .83rem;
+  color: rgba(255, 255, 255, .5)
+}
+
+.engage-item strong {
+  color: rgba(255, 255, 255, .8);
+  min-width: 38px
+}
+
+.engage-email {
+  color: var(--accent);
+  font-size: .86rem;
+  margin-top: 12px;
+  display: block
+}
+
+.sub-form input,
+.sub-form select {
+  width: 100%;
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .1);
+  color: #fff;
+  padding: 10px 13px;
+  border-radius: 8px;
+  font-family: var(--body);
+  font-size: .83rem;
+  margin-bottom: 9px;
+  outline: none;
+  transition: border-color .2s
+}
+
+.sub-form input:focus,
+.sub-form select:focus {
+  border-color: var(--accent)
+}
+
+.sub-form select option {
+  background: #1a0a0d
+}
+
+.sub-btn {
+  width: 100%;
+  background: var(--red);
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-family: var(--body);
+  font-size: .86rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .2s
+}
+
+.sub-btn:hover {
+  background: var(--green-mid)
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, .07);
+  flex-wrap: wrap;
+  gap: 14px
+}
+
+.footer-bottom p {
+  font-size: .8rem;
+  color: rgba(255, 255, 255, .28)
+}
+
+.social-btn {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 7px;
+  color: rgba(255, 255, 255, .45);
+  text-decoration: none;
+  font-size: .8rem;
+  font-weight: 700;
+  transition: all .2s
+}
+
+.social-btn:hover {
+  border-color: var(--red);
+  color: var(--red)
+}
+
+@media (max-width: 980px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start
+  }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 980px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr)
+  }
+
+  .featured-post {
+    grid-template-columns: 1fr
+  }
+
+  .featured-media {
+    min-height: 220px
+  }
+
+  .featured-body {
+    padding: 40px
+  }
+}
+
+@media(max-width:900px) {
+  .nav-burger {
+    display: flex
+  }
+
+  .nav-collapsible {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    border-bottom: 1.5px solid rgba(200, 16, 46, 0.12);
+    transition: max-height .3s ease
+  }
+
+  .nav-collapsible.open {
+    max-height: 420px
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    padding: 8px 5vw
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 12px 6px;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06)
+  }
+
+  .nav-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+    padding: 14px 5vw 18px
+  }
+
+  .nav-portal,
+  .nav-cta {
+    width: 100%;
+    text-align: center;
+    padding: 12px 16px
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-grid {
+    grid-template-columns: 1fr
+  }
+
+  .featured-body {
+    padding: 30px 26px
+  }
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="index.html" class="logo" style="padding:2px 0"><img src="logo.png" alt="Enovexa Solutions Logo"
+        style="height:52px;width:auto;object-fit:contain;display:block" /></a>
+    <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-collapsible" id="navCollapsible">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="career.html">Careers</a></li>
+        <li><a href="blog.html">Blogs</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="nav-portal" onclick="window.location.href='portal.html'">🔐 Employee Portal</button>
+        <a href="contact.html#transform-contact" class="nav-cta">Free Consulting →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="fade-up" style="padding-top:10px">
+      <span class="sec-label">Our Blog</span>
+      <h1 style="transition-delay:.15s">Ideas On Growth, Built <em>By Enovexa</em></h1>
+      <p style="transition-delay:.3s">Practical thinking on web development, digital marketing, branding, custom
+        software and technology — from the team that builds it for our clients every day across India, USA,
+        Australia and the UAE.</p>
+    </div>
+    <div class="fade-up" style="transition-delay:.15s">
+      <img class="page-hero-img"
+        src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1170&auto=format&fit=crop"
+        alt="Enovexa Solutions blog" loading="lazy">
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <div class="blog-stats-strip fade-up">
+    <div class="blog-stat">
+      <strong>15+</strong>
+      <span>Articles Published</span>
+    </div>
+    <div class="blog-stat">
+      <strong>50+</strong>
+      <span>Monthly Readers</span>
+    </div>
+    <div class="blog-stat">
+      <strong>5</strong>
+      <span>Core Categories</span>
+    </div>
+    <div class="blog-stat">
+      <strong>4.6</strong>
+      <span>Reader Rating</span>
+    </div>
+  </div>
+
+  <!-- BLOG CONTENT -->
+  <section id="blog" style="padding-top:56px">
+    <div class="blog-wrap">
+
+      <!-- FEATURED POST -->
+      <div class="featured-post fade-up">
+        <div class="featured-media">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+            alt="Marketing team reviewing ad campaign performance" />
+        </div>
+        <div class="featured-body">
+          <span class="featured-tag">Digital Marketing</span>
+          <h2>Why Most SMEs Are Wasting Ad Spend In 2026 (And How To Fix It)</h2>
+          <p>Ad costs are climbing across every platform. We break down the targeting, creative and funnel
+            mistakes we see most often — and the framework we use to fix them for our own clients.</p>
+          <div class="featured-meta">
+            <div class="featured-meta-text">
+              <span>June 24, 2026 · 7 min read</span>
+            </div>
+          </div>
+          <a href="Article00.html" class="featured-read-btn">Read Full Article →</a>
+        </div>
+      </div>
+
+      <!-- BLOG GRID -->
+      <div class="blog-grid" id="blog-grid">
+
+        <!-- Card 1 -->
+        <a href="article01.html" class="blog-card-link-wrap">
+        <div class="blog-card fade-up">
+          <div class="blog-card-media">
+            <span class="blog-card-cat">Web Development</span>
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
+              alt="Laptop showing website analytics dashboard" />
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-card-date">June 18, 2026</span>
+            <h3>Website Speed Is A Ranking Factor — Here's What's Actually Slowing You Down</h3>
+            <p>A practical checklist for diagnosing Core Web Vitals issues before they cost you traffic and
+              conversions.</p>
+            <div class="blog-card-foot">
+              <span class="blog-card-readtime">5 min read</span>
+            </div>
+          </div>
+        </div>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="article02.html" class="blog-card-link-wrap">
+        <div class="blog-card fade-up">
+          <div class="blog-card-media">
+            <span class="blog-card-cat">SEO</span>
+            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=800&q=80"
+              alt="SEO analytics dashboard on screen" />
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-card-date">June 10, 2026</span>
+            <h3>Local SEO In 2026: What Actually Moves The Needle On Google Maps</h3>
+            <p>Beyond reviews and keywords — the signals we prioritize when ranking local businesses for our
+              clients this year.</p>
+            <div class="blog-card-foot">
+              <span class="blog-card-readtime">6 min read</span>
+            </div>
+          </div>
+        </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="article03.html" class="blog-card-link-wrap">
+        <div class="blog-card fade-up">
+          <div class="blog-card-media">
+            <span class="blog-card-cat">Branding</span>
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
+              alt="Brand identity design mood board" />
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-card-date">June 3, 2026</span>
+            <h3>Rebranding Without Losing Your Existing Customers</h3>
+            <p>A step-by-step approach to refreshing your visual identity while keeping brand recognition intact.
+            </p>
+            <div class="blog-card-foot">
+              <span class="blog-card-readtime">4 min read</span>
+            </div>
+          </div>
+        </div>
+        </a>
+
+        <!-- Card 4 -->
+        <a href="article04.html" class="blog-card-link-wrap">
+        <div class="blog-card fade-up">
+          <div class="blog-card-media">
+            <span class="blog-card-cat">AI & Automation</span>
+            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80"
+              alt="AI technology and automation concept" />
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-card-date">May 27, 2026</span>
+            <h3>Where AI Actually Belongs In Your Marketing Stack</h3>
+            <p>Content generation, lead scoring, chat support — where AI is delivering real ROI right now versus
+              where it's still hype.</p>
+            <div class="blog-card-foot">
+              <span class="blog-card-readtime">8 min read</span>
+            </div>
+          </div>
+        </div>
+        </a>
+
+        <!-- Card 5 -->
+        <a href="Article05.html" class="blog-card-link-wrap">
+        <div class="blog-card fade-up">
+          <div class="blog-card-media">
+            <span class="blog-card-cat">Digital Marketing</span>
+            <img src="https://images.unsplash.com/photo-1611926653458-09294b3142bf?auto=format&fit=crop&w=800&q=80"
+              alt="Phone displaying social media reels feed" />
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-card-date">May 19, 2026</span>
+            <h3>Instagram Reels vs. YouTube Shorts: Where Should Your Budget Go?</h3>
+            <p>We compared CPM, engagement and conversion data across both platforms for five client campaigns —
+              here's what won.</p>
+            <div class="blog-card-foot">
+              <span class="blog-card-readtime">5 min read</span>
+            </div>
+          </div>
+        </div>
+        </a>
+
+        <!-- Card 6 -->
+        <a href="Article06.html" class="blog-card-link-wrap">
+        <div class="blog-card fade-up">
+          <div class="blog-card-media">
+            <span class="blog-card-cat">Web Development</span>
+            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80"
+              alt="Hand holding mobile phone browsing a website" />
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-card-date">May 12, 2026</span>
+            <h3>Mobile-First Isn't Optional Anymore — It's The Default</h3>
+            <p>Why we design every client site mobile-first from day one, and the conversion lift it delivers.</p>
+            <div class="blog-card-foot">
+              <span class="blog-card-readtime">4 min read</span>
+            </div>
+          </div>
+        </div>
+        </a>
+
+        <!-- Card 7 -->
+        <a href="Article07.html" class="blog-card-link-wrap">
+        <div class="blog-card fade-up">
+          <div class="blog-card-media">
+            <span class="blog-card-cat">Digital Marketing</span>
+            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80"
+              alt="Email marketing inbox on laptop screen" />
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-card-date">May 5, 2026</span>
+            <h3>Email Marketing Isn't Dead — Your Segmentation Is</h3>
+            <p>Open rates don't lie. Here's how we rebuild email lists and flows to get inboxes opening again.</p>
+            <div class="blog-card-foot">
+              <span class="blog-card-readtime">5 min read</span>
+            </div>
+          </div>
+        </div>
+        </a>
+
+        <!-- Card 8 -->
+        <a href="Article08.html" class="blog-card-link-wrap">
+        <div class="blog-card fade-up">
+          <div class="blog-card-media">
+            <span class="blog-card-cat">Web Development</span>
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80"
+              alt="Digital padlock representing website security" />
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-card-date">April 28, 2026</span>
+            <h3>5 Website Security Basics Every Business Owner Should Know</h3>
+            <p>SSL, backups, updates and access control — the non-negotiables we set up on every client site.</p>
+            <div class="blog-card-foot">
+              <span class="blog-card-readtime">6 min read</span>
+            </div>
+          </div>
+        </div>
+        </a>
+
+        <!-- Card 9 -->
+        <a href="Article09.html" class="blog-card-link-wrap">
+        <div class="blog-card fade-up">
+          <div class="blog-card-media">
+            <span class="blog-card-cat">Branding</span>
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80"
+              alt="Team collaborating on content strategy" />
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-card-date">April 21, 2026</span>
+            <h3>Building A Content Calendar That Your Team Will Actually Follow</h3>
+            <p>The simple planning system we use internally to keep client content consistent without burnout.</p>
+            <div class="blog-card-foot">
+              <span class="blog-card-readtime">5 min read</span>
+            </div>
+          </div>
+        </div>
+        </a>
+
+        <!-- Card 10 — Web Solutions -->
+        <a href="Article10.html" class="blog-card-link-wrap">
+        <div class="blog-card fade-up">
+          <div class="blog-card-media">
+            <span class="blog-card-cat">Web Solutions</span>
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80"
+              alt="Developer building a business website" />
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-card-date">April 14, 2026</span>
+            <h3>What Makes A High-Converting Business Website In 2026</h3>
+            <p>The layout, load-time and copywriting decisions we make on every Enovexa web build — and why most
+              template sites fall short.</p>
+            <div class="blog-card-foot">
+              <span class="blog-card-readtime">6 min read</span>
+            </div>
+          </div>
+        </div>
+        </a>
+
+        <!-- Card 11 — Mobile App Development -->
+        <a href="Article11.html" class="blog-card-link-wrap">
+        <div class="blog-card fade-up">
+          <div class="blog-card-media">
+            <span class="blog-card-cat">Mobile Apps</span>
+            <img src="https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&w=800&q=80"
+              alt="Mobile app interface screens" />
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-card-date">April 7, 2026</span>
+            <h3>Native vs. Cross-Platform: Choosing The Right Approach For Your App</h3>
+            <p>Cost, performance and time-to-market compared, so you can pick the build path that fits your
+              business — not just the trend.</p>
+            <div class="blog-card-foot">
+              <span class="blog-card-readtime">7 min read</span>
+            </div>
+          </div>
+        </div>
+        </a>
+
+        <!-- Card 12 — Digital Marketing -->
+        <a href="Article12.html" class="blog-card-link-wrap">
+        <div class="blog-card fade-up">
+          <div class="blog-card-media">
+            <span class="blog-card-cat">Digital Marketing</span>
+            <img src="https://plus.unsplash.com/premium_photo-1661443822504-0e382dbc1e48?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDl8fGRpZ2l0YWwlMjBtYXJrZXRpbmd8ZW58MHx8MHx8fDA%3D"
+              alt="Marketing strategy roadmap on a desk" />
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-card-date">March 31, 2026</span>
+            <h3>Inside Our 90-Day Digital Marketing Roadmap For New Clients</h3>
+            <p>The exact phases — audit, quick wins, scale — we run through with every new brand we onboard.</p>
+            <div class="blog-card-foot">
+              <span class="blog-card-readtime">6 min read</span>
+            </div>
+          </div>
+        </div>
+        </a>
+
+        <!-- Card 13 — Custom Software -->
+        <a href="Article13.html" class="blog-card-link-wrap">
+        <div class="blog-card fade-up">
+          <div class="blog-card-media">
+            <span class="blog-card-cat">Custom Software</span>
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+              alt="Software development on multiple screens" />
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-card-date">March 24, 2026</span>
+            <h3>When Off-The-Shelf Software Stops Working For Your Business</h3>
+            <p>The signs it's time to move from generic tools to a custom-built system, and what that process
+              actually looks like.</p>
+            <div class="blog-card-foot">
+              <span class="blog-card-readtime">5 min read</span>
+            </div>
+          </div>
+        </div>
+        </a>
+
+        <!-- Card 14 — AI-Driven Marketing -->
+        <a href="Article14.html" class="blog-card-link-wrap">
+        <div class="blog-card fade-up">
+          <div class="blog-card-media">
+            <span class="blog-card-cat">AI Marketing</span>
+            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80"
+              alt="AI network and automation concept" />
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-card-date">March 17, 2026</span>
+            <h3>3 Ways We Use AI To Personalize Campaigns Without Losing The Human Touch</h3>
+            <p>How our AI-driven marketing service blends automation with real creative judgment for better
+              results.</p>
+            <div class="blog-card-foot">
+              <span class="blog-card-readtime">6 min read</span>
+            </div>
+          </div>
+        </div>
+        </a>
+
+        <!-- Card 15 — Event Management -->
+        <a href="Article15.html" class="blog-card-link-wrap">
+        <div class="blog-card fade-up">
+          <div class="blog-card-media">
+            <span class="blog-card-cat">Event Management</span>
+            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80"
+              alt="Corporate event and conference audience" />
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-card-date">March 10, 2026</span>
+            <h3>Planning A Corporate Launch Event: Our End-To-End Checklist</h3>
+            <p>Venue, vendors, timelines and follow-up — the full framework our events team runs for client
+              launches.</p>
+            <div class="blog-card-foot">
+              <span class="blog-card-readtime">7 min read</span>
+            </div>
+          </div>
+        </div>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" style="display:inline-block"><img src="logo.png" alt="Enovexa Solutions"
+            style="height:46px;width:auto;object-fit:contain;display:block" /></a>
+        <p>Innovation, Elevated. Building world-class digital solutions for businesses across India, USA, Australia, and
+          UAE.</p>
+        <div style="margin-top:16px;display:flex;gap:8px">
+          <a class="social-btn" href="https://www.linkedin.com/company/enovexa/posts/?feedView=all" title="LinkedIn">in</a>
+          <a class="social-btn" href="https://www.instagram.com/enovexaofficial/?hl=en" title="Instagram">IG</a>
+          <a class="social-btn" href="https://www.facebook.com/people/Enovexa/61568164800135/" title="Facebook">f</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="websolution.html">Web Solutions</a></li>
+          <li><a href="appdevelopment.html">Mobile Apps</a></li>
+          <li><a href="digitalmarketing.html">Digital Marketing</a></li>
+          <li><a href="customsoftware.html">Custom Software</a></li>
+          <li><a href="aimarketing.html">AI Marketing</a></li>
+          <li><a href="eventmanagement.html">Event Management</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="career.html">Careers</a></li>
+          <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="refund-policy.html">Refund policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-engage">
+        <h5>Engage</h5>
+        <div class="engage-item"><strong>USA</strong> +1 904 235 9447</div>
+        <div class="engage-item"><strong>AUS</strong> +61 430 770 205</div>
+        <div class="engage-item"><strong>IND</strong> +91 84689 00600</div>
+        <div class="engage-item"><strong>UAE</strong> +971 50 417 0991</div>
+        <a class="engage-email" href="mailto:info@enovexa.com">info@enovexa.com</a>
+      </div>
+      <div class="footer-transform">
+        <h5>Transform</h5>
+        <div class="sub-form">
+          <input type="text" id="sub-name" placeholder="Your full name" />
+          <input type="email" id="sub-email" placeholder="Your email address *" required />
+          <input type="text" id="sub-company" placeholder="Company name (optional)" />
+          <select id="sub-service">
+            <option value="">Service of interest...</option>
+            <option>Web Solutions</option>
+            <option>Mobile App Development</option>
+            <option>Digital Marketing</option>
+            <option>Custom Software</option>
+            <option>AI-Driven Marketing</option>
+            <option>Event Management</option>
+          </select>
+          <button class="sub-btn" onclick="handleSubscribe()">Submit your information now</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Enovexa Solutions Pvt. Ltd. All rights reserved.</p>
+      <p style="font-size:.73rem;color:rgba(255,255,255,.2)">Powered by AI · Secured by Razorpay</p>
+    </div>
+  </footer>
+
+  <script>
+    // Fade-up scroll animation
+    const faders = document.querySelectorAll('.fade-up');
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.15 });
+    faders.forEach(el => appearOnScroll.observe(el));
+
+    // Nav shadow on scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      nav.style.boxShadow = window.scrollY > 50 ? '0 4px 32px rgba(0,0,0,0.25)' : '0 2px 16px rgba(0,0,0,0.08)';
+    });
+
+    // ── MOBILE NAV TOGGLE ──
+    (function(){
+      const burger = document.getElementById('navBurger');
+      const menu = document.getElementById('navCollapsible');
+      if (!burger || !menu) return;
+      function closeMenu(){
+        menu.classList.remove('open');
+        burger.classList.remove('open');
+        burger.setAttribute('aria-expanded','false');
+      }
+      burger.addEventListener('click', () => {
+        const isOpen = menu.classList.toggle('open');
+        burger.classList.toggle('open', isOpen);
+        burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      // Close after tapping a link/action inside the menu
+      menu.addEventListener('click', (e) => {
+        if (e.target.closest('a, button')) closeMenu();
+      });
+      // Close if the viewport grows back to desktop size
+      window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
+    })();
+  </script>
+
+</body>
+
+</html>
